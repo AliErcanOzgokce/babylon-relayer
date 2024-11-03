@@ -54,8 +54,11 @@ import (
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	babylonrelayermodulev1 "github.com/AliErcanOzgokce/babylon-relayer/api/babylonrelayer/babylonrelayer/module"
+	btcstakingmodulev1 "github.com/AliErcanOzgokce/babylon-relayer/api/babylonrelayer/btcstaking/module"
 	_ "github.com/AliErcanOzgokce/babylon-relayer/x/babylonrelayer/module" // import for side-effects
 	babylonrelayermoduletypes "github.com/AliErcanOzgokce/babylon-relayer/x/babylonrelayer/types"
+	_ "github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/module" // import for side-effects
+	btcstakingmoduletypes "github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		babylonrelayermoduletypes.ModuleName,
+		btcstakingmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		babylonrelayermoduletypes.ModuleName,
+		btcstakingmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		babylonrelayermoduletypes.ModuleName,
+		btcstakingmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -296,6 +302,10 @@ var (
 			{
 				Name:   babylonrelayermoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&babylonrelayermodulev1.Module{}),
+			},
+			{
+				Name:   btcstakingmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&btcstakingmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

@@ -76,6 +76,8 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 
 	babylonrelayermodulekeeper "github.com/AliErcanOzgokce/babylon-relayer/x/babylonrelayer/keeper"
+	btcstakingmodulekeeper "github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/keeper"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	"github.com/AliErcanOzgokce/babylon-relayer/docs"
@@ -142,6 +144,7 @@ type App struct {
 	ScopedKeepers             map[string]capabilitykeeper.ScopedKeeper
 
 	BabylonrelayerKeeper babylonrelayermodulekeeper.Keeper
+	BtcstakingKeeper     btcstakingmodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -246,6 +249,7 @@ func New(
 		&app.GroupKeeper,
 		&app.CircuitBreakerKeeper,
 		&app.BabylonrelayerKeeper,
+		&app.BtcstakingKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)

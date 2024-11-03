@@ -1,0 +1,15 @@
+syntax = "proto3";
+package babylonrelayer.btcstaking;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "babylonrelayer/x/btcstaking/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

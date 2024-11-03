@@ -1,0 +1,13 @@
+syntax = "proto3";
+package babylonrelayer.btcstaking;
+
+option go_package = "github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/types";
+
+message BtcstakingPacketData {
+    oneof packet {
+        NoData noData = 1;
+    }
+}
+
+message NoData {
+}
