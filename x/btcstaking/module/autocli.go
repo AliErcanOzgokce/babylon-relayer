@@ -28,6 +28,12 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					RpcMethod: "UpdateParams",
 					Skip:      true, // skipped because authority gated
 				},
+				{
+					RpcMethod:      "SendStakingData",
+					Use:            "send-staking-data [amount] [validator]",
+					Short:          "Send a SendStakingData tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "amount"}, {ProtoField: "validator"}},
+				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},
 		},
