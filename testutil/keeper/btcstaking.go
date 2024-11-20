@@ -21,8 +21,13 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	"github.com/stretchr/testify/require"
 
+	"encoding/json"
 	"github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/keeper"
 	"github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/username/babylon-chain/x/staking/types"
+	"io/ioutil"
+	"net/http"
 )
 
 func BtcstakingKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {
@@ -67,4 +72,26 @@ func BtcstakingKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {
 	}
 
 	return k, ctx
+}
+
+func (k Keeper) FetchStakingData(ctx sdk.Context) (types.StakingData, error) {
+    url := "https://babylonapi.com/staking-data"
+    resp, err := http.Get(url)
+    if err != nil {
+        return types.StakingData{}, err
+    }
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        return types.StakingData{}, err
+    }
+
+    var data types.StakingData
+    err = json.Unmarshal(body, &data)
+    if err != nil {
+        return types.StakingData{}, err
+    }
+
+    return data, nil
 }
