@@ -95,3 +95,7 @@ func (k Keeper) FetchStakingData(ctx sdk.Context) (types.StakingData, error) {
 
     return data, nil
 }
+
+func (k Keeper) VerifyStakingData(ctx sdk.Context) (types.StakingData, error ){
+	// TODO
+}
