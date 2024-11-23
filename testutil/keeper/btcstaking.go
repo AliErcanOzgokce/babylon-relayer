@@ -74,8 +74,8 @@ func BtcstakingKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {
 	return k, ctx
 }
 
-func (k Keeper) FetchStakingData(ctx sdk.Context) (types.StakingData, error) {
-    url := "https://babylonapi.com/staking-data"
+func (k Keeper) FetchStakingData(ctx sdk.Context, txHash string) (types.StakingData, error) {
+    url := "https://staking-api.staging.babylonchain.io/v1/delegation/" + txHash
     resp, err := http.Get(url)
     if err != nil {
         return types.StakingData{}, err
@@ -98,4 +98,5 @@ func (k Keeper) FetchStakingData(ctx sdk.Context) (types.StakingData, error) {
 
 func (k Keeper) VerifyStakingData(ctx sdk.Context) (types.StakingData, error ){
 	// TODO
+	// 
 }
