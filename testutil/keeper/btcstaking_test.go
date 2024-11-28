@@ -64,13 +64,6 @@ func TestFetchStakingData(t *testing.T) {
 	require.Equal(t, mockData, data)
 }package keeper_test
 
-import (
-	"testing"
-
-	"github.com/stretchr/testify/require"
-	keepertest "github.com/AliErcanOzgokce/babylon-relayer/testutil/keeper"
-	"github.com/AliErcanOzgokce/babylon-relayer/x/btcstaking/types"
-)
 
 func TestVerifyStakingData(t *testing.T) {
 	k, ctx := keepertest.BtcstakingKeeper(t)
